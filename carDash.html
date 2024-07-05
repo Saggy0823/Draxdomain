@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text-Based Car Game</title>
+    <style>
+        body {
+            background: url('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/154beb65838927.5b0279a21ff61.gif');
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            background-color: #2c3e50; /* Dark background */
+            color: #f0f0f0; /* Light text */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            max-width: 600px;
+            padding: 20px;
+            background-color: #34495e; /* Darker background for container */
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: #ff8c00; /* Orange color for heading */
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 60%;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 12px 30px;
+            margin: 10px;
+            cursor: pointer;
+            background-color: #ff8c00; /* Orange button background */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #e67300; /* Darker orange on hover */
+        }
+        #output {
+            text-align: left;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome to the Text-Based Car Game!</h2>
+        <label for="carName">Enter your car's name:</label>
+        <input type="text" id="carName">
+        <button onclick="startGame()">Start Game</button>
+
+        <div id="output"></div>
+    </div>
+
+    <script>
+        class Car {
+            constructor(name) {
+                this.name = name;
+                this.fuel = 50;
+                this.distanceTraveled = 0;
+                this.maxSpeed = 120;
+                this.speed = 0;
+            }
+
+            displayStatus() {
+                let output = `<h3>${this.name}'s Status:</h3>`;
+                output += `<p>Fuel: ${this.fuel} liters</p>`;
+                output += `<p>Distance traveled: ${this.distanceTraveled} km</p>`;
+                output += `<p>Speed: ${this.speed} km/h</p>`;
+                document.getElementById('output').innerHTML = output;
+            }
+
+            accelerate() {
+                let acceleration = Math.floor(Math.random() * (15 - 5 + 1)) + 5;
+                this.speed = Math.min(this.speed + acceleration, this.maxSpeed);
+                this.consumeFuel();
+                this.displayStatus();
+                console.log(`${this.name} accelerates to ${this.speed} km/h.`);
+            }
+
+            decelerate() {
+                let deceleration = Math.floor(Math.random() * (10 - 5 + 1)) + 5;
+                this.speed = Math.max(this.speed - deceleration, 0);
+                this.displayStatus();
+                console.log(`${this.name} decelerates to ${this.speed} km/h.`);
+            }
+
+            consumeFuel() {
+                let fuelConsumption = Math.floor(Math.random() * (5 - 1 + 1)) + 1;
+                this.fuel -= fuelConsumption;
+                this.distanceTraveled += this.speed;
+                if (this.fuel <= 0) {
+                    this.fuel = 0;
+                    console.log(`${this.name} is out of fuel!`);
+                    alert("Game over! Your car ran out of fuel.");
+                } else {
+                    console.log(`${this.name} travels ${this.speed} km.`);
+                }
+            }
+        }
+
+        let car;
+
+        function startGame() {
+            let carName = document.getElementById('carName').value.trim();
+            if (carName === "") {
+                alert("Please enter a valid car name!");
+                return;
+            }
+            car = new Car(carName);
+            car.displayStatus();
+            showOptions();
+        }
+
+        function showOptions() {
+            let output = `<h3>What would you like to do?</h3>`;
+            output += `<button onclick="car.accelerate()">Accelerate</button>`;
+            output += `<button onclick="car.decelerate()">Decelerate</button>`;
+            output += `<button onclick="car.displayStatus()">Check Car's Status</button>`;
+            output += `<button onclick="endGame()">Quit Game</button>`;
+            document.getElementById('output').innerHTML = output;
+        }
+
+        function endGame() {
+            console.log("Exiting game...");
+            alert("Exiting game...");
+        }
+    </script>
+</body>
+</html>

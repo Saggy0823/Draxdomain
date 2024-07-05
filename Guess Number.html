@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guess the Number Game</title>
+<style>
+    body {
+        background: url('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/154beb65838927.5b0279a21ff61.gif');
+        background-size: cover;
+        font-family: Arial, sans-serif;
+        background-color: #222; /* Dark background */
+        color: #fff; /* Light text */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    .container {
+        background-color: #333; /* Darker background for container */
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Added shadow */
+        text-align: center;
+        width: 400px;
+    }
+    h1 {
+        color: #ff8c00; /* Orange color for heading */
+        margin-bottom: 10px;
+    }
+    p {
+        color: #ccc; /* Lighter text color */
+        margin-bottom: 20px;
+    }
+    input[type="number"] {
+        padding: 10px;
+        font-size: 16px;
+        width: 70%;
+        margin-right: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        background-color: #444; /* Darker input background */
+        color: #fff; /* Light text for input */
+    }
+    button {
+        padding: 12px 24px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #007bff; /* Blue button background */
+        color: white;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease;
+    }
+    button:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+    }
+    #result {
+        margin-top: 20px;
+        font-size: 18px;
+    }
+    #result.correct {
+        color: green;
+    }
+    #result.wrong {
+        color: red;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Guess the Number Game</h1>
+    <p>Can you guess the number between 1 and 100?</p>
+    <input type="number" id="guessField" min="1" max="100">
+    <button onclick="checkGuess()">Submit Guess</button>
+    <div id="result"></div>
+</div>
+
+<script>
+    const randomNumber = Math.floor(Math.random() * 100) + 1;
+    console.log(randomNumber); // For testing purposes
+
+    let guesses = 0;
+
+    function checkGuess() {
+        let userGuess = parseInt(document.getElementById('guessField').value);
+        let feedback = document.getElementById('result');
+        guesses++;
+
+        if (userGuess === randomNumber) {
+            feedback.textContent = `Congratulations! You guessed the number ${randomNumber} correctly in ${guesses} guesses.`;
+            feedback.classList.add('correct');
+            disableInputAndButton();
+        } else if (userGuess < randomNumber) {
+            feedback.textContent = 'Wrong! Try a higher number.';
+            feedback.classList.add('wrong');
+        } else {
+            feedback.textContent = 'Wrong! Try a lower number.';
+            feedback.classList.add('wrong');
+        }
+    }
+
+    function disableInputAndButton() {
+        document.getElementById('guessField').disabled = true;
+        document.querySelector('button').disabled = true;
+    }
+</script>
+
+</body>
+</html>

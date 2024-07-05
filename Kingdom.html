@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kingdom Management Game</title>
+    <style>
+        body {
+            background: url('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/154beb65838927.5b0279a21ff61.gif');
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            background-color: #222; /* Dark background */
+            color: #fff; /* Light text */
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        #game-container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #333; /* Darker background for game container */
+            border: 1px solid #555;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        #resources {
+            text-align: left;
+            margin-bottom: 20px;
+            color: #ccc; /* Light text for resources */
+        }
+
+        #actions {
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #ff8c00; /* Orange button background */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #e67300; /* Darker orange on hover */
+        }
+
+        #battle-results {
+            text-align: left;
+            margin-top: 20px;
+            display: none;
+        }
+
+        #battle-results p {
+            color: #ccc; /* Light text color for battle results */
+        }
+
+        #battle-results button {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <h1>Kingdom Management Game</h1>
+        <div id="resources">
+            <h2>Resources</h2>
+            <p>Gold: <span id="gold">100</span></p>
+            <p>Food: <span id="food">50</span></p>
+            <p>Population: <span id="population">10</span></p>
+            <p>Army Size: <span id="army-size">250000</span></p>
+        </div>
+        <div id="actions">
+            <h2>Actions</h2>
+            <button onclick="collectGold()">Collect Gold</button>
+            <button onclick="collectFood()">Collect Food</button>
+            <button onclick="recruitPopulation()">Recruit Population</button>
+            <button onclick="prepareForBattle()">Prepare for Battle</button>
+        </div>
+        <div id="battle-results">
+            <h2>Battle Details</h2>
+            <p id="opponent-details"></p>
+            <button onclick="startBattle()">Start Battle</button>
+            <button onclick="returnToKingdom()">Return to Kingdom</button>
+        </div>
+    </div>
+
+    <script>
+        // Initial resources and kingdom properties
+        let gold = 100;
+        let food = 50;
+        let population = 10;
+        let armySize = 250000;
+
+        // Function to update resource display
+        function updateResources() {
+            document.getElementById('gold').textContent = gold;
+            document.getElementById('food').textContent = food;
+            document.getElementById('population').textContent = population;
+            document.getElementById('army-size').textContent = armySize;
+        }
+
+        // Function to collect gold
+        function collectGold() {
+            gold += 10;
+            updateResources();
+        }
+
+        // Function to collect food
+        function collectFood() {
+            food += 10;
+            updateResources();
+        }
+
+        // Function to recruit population
+        function recruitPopulation() {
+            if (gold >= 20) {
+                gold -= 20;
+                population += 1;
+                updateResources();
+            } else {
+                alert("Not enough gold to recruit population!");
+            }
+        }
+
+        // Function to prepare for battle
+        function prepareForBattle() {
+            document.getElementById('battle-results').style.display = 'block';
+            let opponentArmySize = Math.floor(Math.random() * 1000000) + 1; // Random opponent army size
+            document.getElementById('opponent-details').textContent = `Opponent Army Size: ${opponentArmySize}`;
+        }
+
+        // Function to start battle
+        function startBattle() {
+            let opponentArmySize = parseInt(document.getElementById('opponent-details').textContent.split(': ')[1]);
+
+            // Determine battle outcome
+            if (armySize > opponentArmySize) {
+                let reward = opponentArmySize; // Reward equal to opponent's army size
+                armySize += opponentArmySize; // Add defeated army size to your army
+                gold += reward; // Gain gold equal to opponent's army size
+                food += reward; // Gain food equal to opponent's army size
+                population += Math.floor(Math.random() * 10) + 1; // Increase population by random amount (1 to 10)
+                alert(`Victory! You captured ${opponentArmySize} soldiers and earned ${reward} gold and ${reward} food. Population increased by ${population}.`);
+            } else {
+                alert(`Defeat! Your army was defeated by the opponent's army.`);
+            }
+
+            // Update resources and army size
+            updateResources();
+            document.getElementById('battle-results').style.display = 'none';
+        }
+
+        // Function to return to kingdom without battling
+        function returnToKingdom() {
+            document.getElementById('battle-results').style.display = 'none';
+        }
+
+        // Initialize game
+        updateResources();
+    </script>
+</body>
+</html>

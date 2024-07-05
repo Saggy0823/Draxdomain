@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment QR Code</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .qr-code {
+            margin-bottom: 20px;
+        }
+
+        .success-message {
+            display: none;
+            color: #4CAF50;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Payment QR Code</h1>
+        <div class="qr-code">
+            <!-- Placeholder for QR code image -->
+            <img src="C:\Users\DRAX\OneDrive\Pictures\Screenshots\Screenshot 2024-06-23 043209.png" alt="Payment QR Code" width="200">
+        </div>
+        <div class="success-message" id="successMessage">
+            Payment Successful! You now have access.
+        </div>
+    </div>
+
+    <!-- Replace with your JavaScript logic -->
+    <script>
+        // Simulating payment success after 5 seconds (for demonstration)
+        setTimeout(function() {
+            // Replace the placeholder QR code image with an actual QR code image URL
+            document.querySelector('.qr-code img').src = 'C:/Users/DRAX/OneDrive/Pictures/Screenshots/Screenshot 2024-06-23 043209.png' ;
+            
+            // Show the success message
+            document.getElementById('successMessage').style.display = 'block';
+        }, 5000); // Adjust time based on actual payment confirmation process
+    </script>
+</body>
+</html>

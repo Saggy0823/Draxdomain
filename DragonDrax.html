@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dragon Drax Adventure - Action Survival Game</title>
+<style>
+    body {
+        background: url('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/154beb65838927.5b0279a21ff61.gif');
+        background-size: cover;
+        font-family: Arial, sans-serif;
+        background-color: #222; /* Dark background */
+        color: #fff; /* Light text */
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    .container {
+        background-color: #333; /* Darker background for container */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Added shadow */
+        text-align: center;
+        width: 400px; /* Reduced container width */
+    }
+    h1 {
+        color: #ff8c00; /* Orange color for heading */
+        margin-bottom: 20px;
+    }
+    p {
+        color: #ccc; /* Lighter text color */
+        margin-bottom: 10px;
+    }
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #ff8c00; /* Orange button background */
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease;
+        margin-bottom: 10px;
+    }
+    button:hover {
+        background-color: #e67300; /* Darker orange on hover */
+    }
+    .hidden {
+        display: none;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Dragon Drax Adventure - Action Survival Game</h1>
+    <p>Welcome to the dangerous world of Dragon Drax. Your adventure begins...</p>
+    <button onclick="startGame()">Start Adventure</button>
+    <div id="game" class="hidden">
+        <p>Explore the dark forest and face 10 demons...</p>
+        <button onclick="encounter()">Encounter Demon</button>
+        <button onclick="heal()">Heal (enter '3')</button>
+        <p id="result"></p>
+        <p>Your Health Points (HP): <span id="playerHP">100</span></p>
+        <p>Demon's Name: <span id="demonName"></span></p>
+        <p>Demon's Health Points (HP): <span id="demonHP">0</span></p>
+        <p>Coins Earned: <span id="coins">0</span></p>
+        <button onclick="startGame()">Restart Adventure</button>
+    </div>
+</div>
+
+<script>
+    let coins = 0;
+    let playerHP = 100;
+    let demonHP = 0;
+    const demonNames = [
+        "Astaroth",
+        "Belial",
+        "Moloch",
+        "Leviathan",
+        "Bael",
+        "Lucifer",
+        "Abaddon",
+        "Beelzebub",
+        "Asmodeus",
+        "Lilith"
+    ];
+
+    function startGame() {
+        document.getElementById('game').classList.remove('hidden');
+        document.querySelector('button').classList.add('hidden');
+        document.getElementById('playerHP').textContent = playerHP;
+    }
+
+    function encounter() {
+        let result = document.getElementById('result');
+        let randomIndex = Math.floor(Math.random() * demonNames.length);
+        let demonName = demonNames[randomIndex];
+        let demonStrength = Math.floor(Math.random() * 10) + 1; // Random strength between 1 and 10
+        demonHP = demonStrength * 10; // Demon's HP based on strength
+
+        if (playerHP <= 0) {
+            result.textContent = "You are too weak to continue. Game over!";
+            disableButtons();
+            return;
+        }
+
+        document.getElementById('demonName').textContent = demonName;
+        document.getElementById('demonHP').textContent = demonHP;
+
+        if (demonStrength < 5) {
+            result.textContent = `You encountered ${demonName}, a weak demon (${demonStrength}). You defeated it and earned 10 coins.`;
+            coins += 10;
+        } else if (demonStrength >= 5 && demonStrength < 8) {
+            result.textContent = `You encountered ${demonName}, a moderate demon (${demonStrength}). You defeated it and earned 20 coins.`;
+            coins += 20;
+        } else {
+            result.textContent = `You encountered ${demonName}, a strong demon (${demonStrength}). Fight begins...`;
+            return;
+        }
+
+        document.getElementById('coins').textContent = coins;
+    }
+
+    function heal() {
+        playerHP = 100;
+        document.getElementById('playerHP').textContent = playerHP;
+        document.getElementById('result').textContent = "You have been healed. Your health is restored to 100.";
+    }
+
+    function disableButtons() {
+        document.querySelectorAll('button:not(:last-of-type)').forEach(button => {
+            button.disabled = true;
+        });
+    }
+</script>
+
+</body>
+</html>

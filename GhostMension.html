@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghost Mansion Explore Game</title>
+    <style>
+        body {
+            background: url('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/154beb65838927.5b0279a21ff61.gif');
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #222;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            width: 80%;
+            max-width: 600px;
+        }
+        h1 {
+            color: #FFA500; /* Orange header */
+            margin-bottom: 20px;
+        }
+        p {
+            color: #ccc;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #FFA500; /* Orange button */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #FF8C00; /* Darker orange on hover */
+        }
+        .hidden {
+            display: none;
+        }
+        .room {
+            background-color: #333;
+            color: #ccc;
+            border: 1px solid #555;
+            border-radius: 5px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: left;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        .description {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Ghost Mansion Explore Game</h1>
+    <p>Welcome to the haunted mansion. Explore the rooms and uncover its secrets...</p>
+    <button onclick="startGame()">Start Exploring</button>
+    <div id="game" class="hidden">
+        <div id="room1" class="room">
+            <h2>Room 1: Entrance Hall</h2>
+            <p class="description">You enter a dimly lit hall. Shadows dance eerily along the walls...</p>
+            <button onclick="exploreRoom('room2')">Enter Room 2</button>
+        </div>
+        <div id="room2" class="room hidden">
+            <h2>Room 2: Dining Room</h2>
+            <p class="description">The dining table is set with dusty dishes. Strange noises echo around you...</p>
+            <button onclick="exploreRoom('room3')">Enter Room 3</button>
+        </div>
+        <div id="room3" class="room hidden">
+            <h2>Room 3: Library</h2>
+            <p class="description">Books line the walls, some open as if left in a hurry. A cold breeze sends a shiver down your spine...</p>
+            <button onclick="exploreRoom('room4')">Enter Room 4</button>
+        </div>
+        <div id="room4" class="room hidden">
+            <h2>Room 4: Bedroom</h2>
+            <p class="description">An old bed with tattered sheets. A mirror reflects a faint figure standing behind you...</p>
+            <button onclick="exploreRoom('room5')">Enter Room 5</button>
+        </div>
+        <div id="room5" class="room hidden">
+            <h2>Room 5: Basement</h2>
+            <p class="description">Stairs lead down into darkness. You hear whispers and footsteps from below...</p>
+            <button onclick="exploreRoom('room6')">Enter Room 6</button>
+        </div>
+        <div id="room6" class="room hidden">
+            <h2>Room 6: Attic</h2>
+            <p class="description">Dust swirls in the air, revealing old trunks and forgotten treasures. A chill fills the room...</p>
+            <button onclick="exploreRoom('room7')">Enter Room 7</button>
+        </div>
+        <div id="room7" class="room hidden">
+            <h2>Room 7: Study</h2>
+            <p class="description">Desks littered with parchments. Candles flicker, casting eerie shadows...</p>
+            <button onclick="exploreRoom('room8')">Enter Room 8</button>
+        </div>
+        <div id="room8" class="room hidden">
+            <h2>Room 8: Gallery</h2>
+            <p class="description">Paintings of grim faces stare at you. Eyes seem to follow your every move...</p>
+            <button onclick="exploreRoom('room9')">Enter Room 9</button>
+        </div>
+        <div id="room9" class="room hidden">
+            <h2>Room 9: Ballroom</h2>
+            <p class="description">Empty dance floor, yet you hear faint music. Shadows swirl around, as if dancers from another time...</p>
+            <button onclick="exploreRoom('room10')">Enter Room 10</button>
+        </div>
+        <div id="room10" class="room hidden">
+            <h2>Room 10: Crypt</h2>
+            <p class="description">Cobwebs hang from ancient coffins. Cold air fills your lungs as whispers call your name...</p>
+            <button onclick="endGame()">End Exploration</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function startGame() {
+        document.getElementById('game').classList.remove('hidden');
+        document.querySelector('button').classList.add('hidden');
+        document.getElementById('room1').classList.remove('hidden'); // Show initial room
+    }
+
+    function exploreRoom(roomId) {
+        // Hide current room
+        document.querySelectorAll('.room').forEach(room => {
+            room.classList.add('hidden');
+        });
+        // Show selected room
+        document.getElementById(roomId).classList.remove('hidden');
+    }
+
+    function endGame() {
+        alert("You've escaped the haunted mansion... for now.");
+        location.reload(); // Reload page to restart game
+    }
+</script>
+
+</body>
+</html>

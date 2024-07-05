@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bike Showroom Simulator</title>
+    <style>
+        body {
+            background: url('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/154beb65838927.5b0279a21ff61.gif');
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            color: #fff; /* Text color for contrast */
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #333; /* Dark background */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.6); /* Darker shadow */
+        }
+        h1, h2, h3 {
+            margin-bottom: 20px;
+            color: #FFA500; /* Orange header */
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            background-color: #FFA500; /* Orange button */
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #FF8C00; /* Darker orange on hover */
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            color: #fff; /* White text for table */
+        }
+        th {
+            background-color: #FFA500; /* Orange header */
+        }
+        #bankBalance {
+            color: #FFA500; /* Orange color for bank balance */
+            margin-bottom: 10px;
+        }
+        #output {
+            text-align: left;
+            color: #fff; /* White text for output */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bike Showroom Simulator</h1>
+
+        <div id="bankBalance"></div>
+
+        <div id="actions">
+            <button onclick="displayBikes()">Display Available Bikes</button>
+            <button onclick="importBikes()">Import Bikes</button>
+            <button onclick="dealWithCustomer()">Deal with Customer</button>
+            <button onclick="checkBankBalance()">Check Bank Balance</button>
+            <button onclick="exitShowroom()">Exit Showroom</button>
+        </div>
+
+        <div id="output"></div>
+    </div>
+
+    <script>
+        let bankBalance = 100000;
+        let inventory = {
+            "S1000RR": 0,
+            "NINJA H2": 0,
+            "PANIGALE V4": 0,
+            "SUPERLEGGERA V4": 0,
+            "HAYABUSA": 0,
+            "DOMINAR": 0,
+            "KTM 1250": 0,
+            "GT650": 0,
+            "CBR1000RR-R": 0,
+            "R1M": 0,
+            "Z900": 0,
+            "GSX-R1000": 0,
+            "CBR650R": 0,
+            "YZF-R1": 0,
+            "MT-09": 0,
+            "Ninja 400": 0,
+            "Street Triple RS": 0,
+            "Duke 390": 0,
+            "Scrambler 1200": 0,
+            "Africa Twin": 0,
+            "Versys 1000": 0,
+            "Sportster Iron 883": 0,
+            "Indian Scout": 0
+        };
+
+        const bikesAvailable = {
+            "S1000RR": { model: "S1000RR", price: 20000 },
+            "NINJA H2": { model: "NINJA H2", price: 25000 },
+            "PANIGALE V4": { model: "PANIGALE V4", price: 30000 },
+            "SUPERLEGGERA V4": { model: "SUPERLEGGERA V4", price: 40000 },
+            "HAYABUSA": { model: "HAYABUSA", price: 18000 },
+            "DOMINAR": { model: "DOMINAR", price: 12000 },
+            "KTM 1250": { model: "KTM 1250", price: 28000 },
+            "GT650": { model: "GT650", price: 15000 },
+            "CBR1000RR-R": { model: "CBR1000RR-R", price: 26000 },
+            "R1M": { model: "R1M", price: 27000 },
+            "Z900": { model: "Z900", price: 11000 },
+            "GSX-R1000": { model: "GSX-R1000", price: 23000 },
+            "CBR650R": { model: "CBR650R", price: 14000 },
+            "YZF-R1": { model: "YZF-R1", price: 25000 },
+            "MT-09": { model: "MT-09", price: 13000 },
+            "Ninja 400": { model: "Ninja 400", price: 8000 },
+            "Street Triple RS": { model: "Street Triple RS", price: 15000 },
+            "Duke 390": { model: "Duke 390", price: 10000 },
+            "Scrambler 1200": { model: "Scrambler 1200", price: 18000 },
+            "Africa Twin": { model: "Africa Twin", price: 20000 },
+            "Versys 1000": { model: "Versys 1000", price: 19000 },
+            "Sportster Iron 883": { model: "Sportster Iron 883", price: 12000 },
+            "Indian Scout": { model: "Indian Scout", price: 17000 }
+        };
+
+        function displayBikes() {
+            let output = "<h2>Bikes Available:</h2>";
+            output += "<table>";
+            output += "<tr><th>Model</th><th>Price</th><th>Available</th></tr>";
+            for (const model in bikesAvailable) {
+                if (inventory[model] > 0) {
+                    output += `<tr><td>${bikesAvailable[model].model}</td><td>$${bikesAvailable[model].price}</td><td>${inventory[model]}</td></tr>`;
+                }
+            }
+            output += "</table>";
+            document.getElementById('output').innerHTML = output;
+        }
+
+        function importBikes() {
+            let output = "<h2>Import Bikes:</h2>";
+            for (const model in bikesAvailable) {
+                let quantity = parseInt(prompt(`Enter number of ${bikesAvailable[model].model} bikes to import:`));
+                if (!isNaN(quantity) && quantity > 0) {
+                    let costToPurchase = bikesAvailable[model].price * 0.5; // 50% of bike price
+                    if (bankBalance >= costToPurchase) {
+                        inventory[model] += quantity;
+                        bankBalance -= costToPurchase;
+                        output += `<p>Imported ${quantity} ${bikesAvailable[model].model} bikes into inventory.</p>`;
+                    } else {
+                        output += `<p>Insufficient funds to purchase ${quantity} ${bikesAvailable[model].model} bikes.</p>`;
+                    }
+                }
+            }
+            document.getElementById('output').innerHTML = output;
+            updateBankBalance();
+        }
+
+        function dealWithCustomer() {
+            let output = "<h2>Deal with Customer:</h2>";
+            let availableModels = Object.keys(inventory).filter(model => inventory[model] > 0);
+            if (availableModels.length === 0) {
+                output += "<p>No bikes available for sale!</p>";
+            } else {
+                let customerChoice = availableModels[Math.floor(Math.random() * availableModels.length)];
+                let bike = bikesAvailable[customerChoice];
+                output += `<p>Customer demands a ${bike.model}. Price: $${bike.price}</p>`;
+                let decision = prompt("Do you want to sell this bike to the customer? (yes/no)").toLowerCase();
+                if (decision === 'yes') {
+                    let profit = bike.price * 0.75; // 75% of bike price
+                    bankBalance += profit;
+                    inventory[customerChoice]--;
+                    output += `<p>Sold the ${bike.model} to the customer. Bank balance increased by $${profit}. Current balance: $${bankBalance}</p>`;
+                } else if (decision === 'no') {
+                    output += "<p>Customer leaves without purchasing.</p>";
+                } else {
+                    output += "<p>Invalid choice. Customer leaves without purchasing.</p>";
+                }
+            }
+            document.getElementById('output').innerHTML = output;
+            updateBankBalance();
+        }
+
+        function checkBankBalance() {
+            document.getElementById('bankBalance').innerHTML = `<h3>Current Bank Balance: $${bankBalance}</h3>`;
+        }
+
+        function exitShowroom() {
+            document.getElementById('output').innerHTML = "<h2>Exiting showroom...</h2>";
+        }
+
+        function updateBankBalance() {
+            document.getElementById('bankBalance').innerHTML = `<h3>Current Bank Balance: $${bankBalance}</h3>`;
+        }
+    </script>
+</body>
+</html>
