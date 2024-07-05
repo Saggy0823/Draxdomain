@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Page</title>
+    <style>
+        /* Global styles */
+        body {
+            background: url('https://png.pngtree.com/background/20230522/original/pngtree-robot-in-the-office-of-an-artificial-intelligence-in-the-middle-picture-image_2689423.jpg');
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6;
+            color: #ffffff; /* Set default text color */
+        }
+        a {
+            text-decoration: none; /* Remove underline from links */
+            color: inherit; /* Inherit color from parent */
+        }
+        .section {
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 30px;
+            position: relative;
+            animation: slideInFromLeft 1s ease-out;
+        }
+        .about__container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            justify-content: center;
+            margin-top: 50px;
+            animation: fadeIn 1s ease-out;
+        }
+        .about__img {
+            grid-column: 2 / span 1; /* Position image in the second column */
+            text-align: right; /* Align image to the right */
+            animation: slideInFromRight 1s ease-out;
+        }
+        .about__img img {
+            max-width: 100%;
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        .about__info {
+            grid-column: 1 / span 1; /* Position text in the first column */
+            text-align: center; /* Align text to the center */
+            animation: slideInFromLeft 1s ease-out;
+        }
+        .about__subtitle {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .about__text {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+        button {
+            background-color: #4CAF50;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            color: white;
+            font-size: 1rem;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            margin-right: 20px; /* Adjust margin for spacing */
+        }
+        button:hover {
+            background-color: #45a049; /* Darker shade on hover */
+            box-shadow: 0 0 20px rgba(69, 160, 73, 0.6); /* Glowing effect */
+        }
+        button a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Pop-up hover effect */
+        .pop-up {
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .pop-up::after {
+            content: "";
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            transition: all 0.3s ease;
+        }
+        .pop-up:hover::after {
+            left: 100%;
+        }
+    </style>
+</head>
+<body>
+    <section class="about section" id="about">
+        <button><a href="index.html">Home</a></button>
+        <div class="about__container bd-grid">
+            <div class="about__info">
+                <h2 class="about__subtitle">TODO List Apk</h2>
+                <p class="about__text">The "ToDo List APK" is an intuitive mobile application developed using Java, XML, and Android SDK, designed to enhance productivity and organization. This project offers users a seamless experience in managing tasks, setting reminders, and organizing daily activities efficiently. With a user-friendly interface and robust backend, the ToDo List APK allows users to create, edit, prioritize, and categorize tasks effortlessly. It supports features such as due dates, reminders, task completion tracking, and synchronization across devices, ensuring users stay on top of their schedules. The APK integrates seamlessly with Android devices, providing a responsive and interactive platform for task management on the go. This project showcases the power of mobile development in empowering users to streamline their workflow and achieve greater efficiency in daily life.</p>
+            </div>
+            <div class="about__img">
+                <img src="https://cdni.iconscout.com/illustration/premium/thumb/todo-list-5523307-4609476.png?f=webp" alt="About Image">
+            </div>
+        </div>
+        <div class="pop-up">
+            <button><a href="https://drive.google.com/drive/folders/1H3dUlwy7wL9dFMY9YCoBO-LK2ZBHErpQ?usp=sharing">DownLoad Project</a></button>
+        </div>
+    </section>
+</body>
+</html>
