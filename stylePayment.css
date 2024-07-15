@@ -1,0 +1,100 @@
+body{
+    background: url('backg.gif');
+    background-size: cover;
+}
+.contact-form-area {
+    
+    background-color: rgba(red, green, blue, alpha);
+    padding: 50px 0;
+}
+
+a{
+    color: white;
+    border: 2px solid rgb(221, 0, 255);
+}
+
+h2{
+    color: white;
+}
+.center-div {
+    background-color:rgba(red, green, blue, alpha);
+    padding: 30px;
+    border: 2px solid white;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    max-width: 50%; /* Set maximum width to 50% of the container */
+    margin: 0 auto; /* Center align the form horizontally */
+}
+
+.contact_form h2 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.contact_form img.contact-image {
+    display: block;
+    margin: 20px auto; /* Adjust margin as needed */
+}
+
+.contact_form form {
+    margin-top: 20px;
+}
+
+.contact_input_area {
+    margin-bottom: 20px;
+    color: #e4277c;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    color:#e12e7e;
+    
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.btn {
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+    color: #fff;
+}
+
+.steps-container {
+    display: none;
+    margin-top: 20px;
+    background-color:rgba(166, 0, 255, 0.449);
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.steps-container p {
+    margin-bottom: 10px;
+}
+
+.icon-container {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.steps-icon {
+    color: white;
+    width: 50px; /* Adjust icon size */
+    cursor: pointer;
+}
