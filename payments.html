@@ -7,6 +7,92 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:300i,400,400i,500,600,700,800" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="stylePayment.css">
+    <style>
+        /* Background image for the entire page */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('backg.gif') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .contact-form-area {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            backdrop-filter: blur(10px); /* Adds a blur effect to the background */
+        }
+        .center-div {
+            max-width: 600px;
+            width: 100%;
+        }
+        .contact_form {
+            background: rgba(255, 255, 255, 0.201); /* Semi-transparent white */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .contact_form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .steps-container {
+            display: none;
+            margin-bottom: 20px;
+        }
+        .steps {
+            background: rgba(241, 241, 241, 0.8); /* Semi-transparent background */
+            padding: 10px;
+            border-radius: 4px;
+            color: #555;
+        }
+        .contact-image {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            height: auto;
+        }
+        .form-group input {
+            background-color: rgba(166, 0, 255, 0.2); /* Transparent input background */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .btn {
+            background-color: #a600ff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn:hover {
+            background-color: #8d00d2;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .contact_form h2 {
+                font-size: 18px;
+            }
+            .contact-image {
+                width: 80%;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="contact-form-area">   												
@@ -32,22 +118,22 @@
                     <div class="contact_input_area">
                         <div id="success_fail_info"></div>
                         <div class="form-group">
-                            <input style="background-color: rgba(166, 0, 255, 0.449);" type="text" name="name" class="form-control" placeholder="Enter Your Name" required="required">
+                            <input type="text" name="name" class="form-control" placeholder="Enter Your Name" required="required">
                         </div>
                         <div class="form-group">
-                            <input style="background-color:  rgba(166, 0, 255, 0.449);" type="email" name="email" class="form-control" placeholder="Enter Your Email" required="required">
+                            <input type="email" name="email" class="form-control" placeholder="Enter Your Email" required="required">
                         </div>
                         <div class="form-group">
-                            <input style="background-color:  rgba(166, 0, 255, 0.449);"  type="text" name="Transaction id" class="form-control" placeholder="Transaction ID" required="required">
+                            <input type="text" name="Transaction id" class="form-control" placeholder="Transaction ID" required="required">
                         </div>
                         <div class="form-group">
-                            <input style="background-color:  rgba(166, 0, 255, 0.449);" type="text" name="WA Number" class="form-control" placeholder="Whatsapp Number" required="required">
+                            <input type="text" name="WA Number" class="form-control" placeholder="Whatsapp Number" required="required">
                         </div>
                         <div class="form-group">
-                            <input style="background-color:  rgba(166, 0, 255, 0.449);" type="text" name="subject" class="form-control" placeholder="Name of Purchased Product" required="required">
+                            <input type="text" name="subject" class="form-control" placeholder="Name of Purchased Product" required="required">
                         </div>
                         <div class="text-center">
-                            <button type="submit" value="Send message" name="submit" id="submitButton" class="btn btn-secondary ct_btn" title="Submit Your Message!">Submit</button>
+                            <button type="submit" value="Send message" name="submit" id="submitButton" class="btn" title="Submit Your Message!">Submit</button>
                         </div>
                     </div>
                 </form>
