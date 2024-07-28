@@ -31,7 +31,7 @@
             animation: slideInFromLeft 1s ease-out;
         }
         .about__container {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -42,7 +42,6 @@
             animation: fadeIn 1s ease-out;
         }
         .about__img {
-            grid-column: 2 / span 1; /* Position image in the second column */
             text-align: right; /* Align image to the right */
             animation: slideInFromRight 1s ease-out;
         }
@@ -53,7 +52,6 @@
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         }
         .about__info {
-            grid-column: 1 / span 1; /* Position text in the first column */
             text-align: center; /* Align text to the center */
             animation: slideInFromLeft 1s ease-out;
         }
@@ -107,6 +105,53 @@
         .pop-up:hover::after {
             left: 100%;
         }
+
+        /* Media Queries */
+        @media (max-width: 1024px) {
+            .about__container {
+                grid-template-columns: 1fr; /* Single column layout for tablets */
+                gap: 20px;
+            }
+            .about__img {
+                text-align: center; /* Center image */
+            }
+            .about__info {
+                text-align: center; /* Center text */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 40px 10px;
+            }
+            .about__subtitle {
+                font-size: 1.5rem;
+            }
+            .about__text {
+                font-size: 1rem;
+            }
+            button {
+                font-size: 0.9rem;
+                padding: 10px 20px;
+                margin-right: 0; /* Remove margin on smaller screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section {
+                padding: 20px 5px;
+            }
+            .about__subtitle {
+                font-size: 1.25rem;
+            }
+            .about__text {
+                font-size: 0.9rem;
+            }
+            button {
+                font-size: 0.8rem;
+                padding: 8px 16px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -114,15 +159,15 @@
         <button><a href="index.html">Home</a></button>
         <div class="about__container bd-grid">
             <div class="about__info">
-                <h2 class="about__subtitle">Hand Gesture Recognition</h2>
-                <p class="about__text">"Hand Gesture Recognition" is an advanced Python project leveraging computer vision techniques to interpret and respond to hand movements in real-time. Built using libraries like OpenCV and TensorFlow, this project enables the detection and classification of various hand gestures, empowering interaction through intuitive hand movements. Whether it's recognizing gestures for controlling devices, sign language interpretation, or virtual reality applications, this project showcases the fusion of machine learning algorithms with real-world applications. Its robustness and accuracy make it a valuable tool for enhancing human-computer interaction and accessibility in diverse technological environments.</p>
+                <h2 class="about__subtitle">Face Recognition</h2>
+                <p class="about__text">"Face Recognition" is an advanced Python project that utilizes deep learning algorithms to accurately identify and verify individuals from digital images or video frames. Developed using frameworks such as OpenCV and TensorFlow, this project implements convolutional neural networks (CNNs) and facial recognition models like VGG-Face or FaceNet. It enables automatic detection, alignment, and recognition of faces in various settings, from security surveillance to personalized user authentication. With applications in attendance systems, access control, and law enforcement, this project exemplifies the intersection of AI technology and biometrics for enhancing security and efficiency in diverse industries.</p>
             </div>
             <div class="about__img">
-                <img src="https://how2electronics.com/wp-content/uploads/2020/01/Gesture-Recognition-and-Its-Application-in-Machine-Learning.jpg" alt="About Image">
+                <img src="https://miro.medium.com/v2/resize:fit:1400/1*_eNBEzogCrSEdrhsktJe6g.jpeg" alt="About Image">
             </div>
         </div>
         <div class="pop-up">
-            <a href="payments3.html">DownLoad Project</a>
+            <a href="payments5.html">Download Project</a>
         </div>
     </section>
 </body>
