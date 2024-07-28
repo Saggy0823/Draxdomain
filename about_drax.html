@@ -7,12 +7,11 @@
     <style>
         /* Global styles */
         body {
-            background: url('https://png.pngtree.com/background/20230522/original/pngtree-robot-in-the-office-of-an-artificial-intelligence-in-the-middle-picture-image_2689423.jpg');
+            background: url('backg.gif') no-repeat center center fixed;
             background-size: cover;
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f3f4f6;
             color: #ffffff; /* Set default text color */
         }
         a {
@@ -25,43 +24,43 @@
         }
         .section-title {
             font-size: 2.5rem;
-            color: #333;
+            color: #ffffff;
             margin-bottom: 30px;
-            position: relative;
-            animation: slideInFromLeft 1s ease-out;
         }
         .about__container {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            grid-template-columns: 1fr;
+            gap: 20px;
             align-items: center;
             justify-content: center;
-            margin-top: 50px;
-            animation: fadeIn 1s ease-out;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background for contrast */
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
         .about__img {
-            text-align: right; /* Align image to the right */
-            animation: slideInFromRight 1s ease-out;
+            text-align: center; /* Center align image on mobile */
         }
         .about__img img {
             max-width: 100%;
             height: auto; /* Maintain aspect ratio */
             border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
         }
         .about__info {
-            text-align: center; /* Align text to the center */
-            animation: slideInFromLeft 1s ease-out;
+            text-align: center; /* Center text on mobile */
         }
         .about__subtitle {
             font-size: 2rem;
             margin-bottom: 20px;
         }
         .about__text {
-            font-size: 1.2rem;
+            font-size: 1rem;
             line-height: 1.6;
+            margin: 0 auto;
+            max-width: 800px; /* Limit text width */
         }
         button {
             background-color: #4CAF50;
@@ -84,69 +83,13 @@
             text-decoration: none;
         }
 
-        /* Pop-up hover effect */
-        .pop-up {
-            position: relative;
-            display: inline-block;
-            overflow: hidden;
-            z-index: 1;
-        }
-        .pop-up::after {
-            content: "";
-            position: absolute;
-            background: rgba(255, 255, 255, 0.1);
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            transition: all 0.3s ease;
-        }
-        .pop-up:hover::after {
-            left: 100%;
-        }
-
-        /* Media Queries */
-        @media (max-width: 768px) {
-            .section {
-                padding: 40px 10px;
-            }
+        /* Responsive Design */
+        @media (min-width: 768px) {
             .about__container {
-                grid-template-columns: 1fr; /* Single column layout */
-                gap: 20px;
+                grid-template-columns: 1fr 1fr; /* Two columns for tablet and desktop */
             }
             .about__img {
-                text-align: center; /* Center image */
-            }
-            .about__info {
-                text-align: center; /* Center text */
-            }
-            .about__subtitle {
-                font-size: 1.5rem;
-            }
-            .about__text {
-                font-size: 1rem;
-            }
-            button {
-                font-size: 0.9rem;
-                padding: 10px 20px;
-                margin-right: 0; /* Remove margin on smaller screens */
-            }
-        }
-
-        @media (max-width: 480px) {
-            .section {
-                padding: 20px 5px;
-            }
-            .about__subtitle {
-                font-size: 1.25rem;
-            }
-            .about__text {
-                font-size: 0.9rem;
-            }
-            button {
-                font-size: 0.8rem;
-                padding: 8px 16px;
+                text-align: right; /* Align image to the right on larger screens */
             }
         }
     </style>
@@ -154,7 +97,7 @@
 <body>
     <section class="about section" id="about">
         <button><a href="index.html">Home</a></button>
-        <div class="about__container bd-grid">
+        <div class="about__container">
             <div class="about__info">
                 <h2 class="about__subtitle">DRAX ASSISTANT</h2>
                 <p class="about__text">"Drax AI Assistant" is an innovative project developed using Python, HTML, CSS, and Java, aimed at enhancing user productivity through its versatile capabilities. With over 30 live tasks seamlessly integrated, Drax offers an array of functionalities spanning various domains. From managing daily schedules and setting reminders to retrieving real-time weather updates and generating dynamic reports, Drax ensures efficiency in both personal and professional spheres. Its intuitive interface and robust backend empower users to interact effortlessly, leveraging AI-driven insights to streamline workflows and optimize time management.</p>
