@@ -31,7 +31,7 @@
             animation: slideInFromLeft 1s ease-out;
         }
         .about__container {
-            max-width: 800px;
+            max-width: 1200px; /* Increased max-width for larger screens */
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -42,7 +42,6 @@
             animation: fadeIn 1s ease-out;
         }
         .about__img {
-            grid-column: 2 / span 1; /* Position image in the second column */
             text-align: right; /* Align image to the right */
             animation: slideInFromRight 1s ease-out;
         }
@@ -53,8 +52,7 @@
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         }
         .about__info {
-            grid-column: 1 / span 1; /* Position text in the first column */
-            text-align: center; /* Align text to the center */
+            text-align: center; /* Center text */
             animation: slideInFromLeft 1s ease-out;
         }
         .about__subtitle {
@@ -107,6 +105,53 @@
         .pop-up:hover::after {
             left: 100%;
         }
+
+        /* Media Queries */
+        @media (max-width: 1024px) {
+            .about__container {
+                grid-template-columns: 1fr; /* Single column layout for tablets */
+                gap: 20px;
+            }
+            .about__img {
+                text-align: center; /* Center image */
+            }
+            .about__info {
+                text-align: center; /* Center text */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 40px 10px;
+            }
+            .about__subtitle {
+                font-size: 1.5rem;
+            }
+            .about__text {
+                font-size: 1rem;
+            }
+            button {
+                font-size: 0.9rem;
+                padding: 10px 20px;
+                margin-right: 0; /* Remove margin on smaller screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section {
+                padding: 20px 5px;
+            }
+            .about__subtitle {
+                font-size: 1.25rem;
+            }
+            .about__text {
+                font-size: 0.9rem;
+            }
+            button {
+                font-size: 0.8rem;
+                padding: 8px 16px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -115,14 +160,14 @@
         <p class="about__text">"Jarvis AI" is an ambitious Python project inspired by intelligent virtual assistants like those in popular culture. Built using natural language processing (NLP) libraries such as NLTK and spaCy, and leveraging machine learning frameworks like TensorFlow or PyTorch, Jarvis AI aims to provide a seamless human-computer interaction experience. It incorporates speech recognition and synthesis to enable voice commands and responses, allowing users to perform tasks such as setting reminders, retrieving information from the web, controlling smart home devices, and even engaging in casual conversation. Jarvis AI represents a significant step towards personalized AI assistants, demonstrating the power of AI in enhancing everyday productivity and convenience.</p>
         <div class="about__container bd-grid">
             <div class="about__info">
-                <h2 class="about__subtitle">Jarvis AI Assitant</h2>
+                <h2 class="about__subtitle">Jarvis AI Assistant</h2>
             </div>
             <div class="about__img">
                 <img src="https://media.licdn.com/dms/image/C4E12AQH-AYSy6dgC0g/article-cover_image-shrink_600_2000/0/1592916498242?e=2147483647&v=beta&t=6rI6VFxmBdxCZu6jv7wTI0ZIW7Dx7JfGBK_kuZJzk6g" alt="About Image">
             </div>
         </div>
         <div class="pop-up">
-            <a href="payments3.html">DownLoad Project</a>
+            <a href="payments3.html">Download Project</a>
         </div>
     </section>
 </body>
