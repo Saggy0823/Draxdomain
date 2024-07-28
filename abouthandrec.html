@@ -7,12 +7,11 @@
     <style>
         /* Global styles */
         body {
-            background: url('https://png.pngtree.com/background/20230522/original/pngtree-robot-in-the-office-of-an-artificial-intelligence-in-the-middle-picture-image_2689423.jpg');
+            background: url('backg.gif') no-repeat center center fixed;
             background-size: cover;
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f3f4f6;
             color: #ffffff; /* Set default text color */
         }
         a {
@@ -22,48 +21,45 @@
         .section {
             padding: 80px 20px;
             text-align: center;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background for readability */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
         .section-title {
             font-size: 2.5rem;
-            color: #333;
+            color: #ffffff;
             margin-bottom: 30px;
-            position: relative;
-            animation: slideInFromLeft 1s ease-out;
         }
         .about__container {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            grid-template-columns: 1fr;
+            gap: 20px;
             align-items: center;
             justify-content: center;
-            margin-top: 50px;
-            animation: fadeIn 1s ease-out;
         }
         .about__img {
-            grid-column: 2 / span 1; /* Position image in the second column */
-            text-align: right; /* Align image to the right */
-            animation: slideInFromRight 1s ease-out;
+            text-align: center; /* Center align image on mobile */
         }
         .about__img img {
             max-width: 100%;
             height: auto; /* Maintain aspect ratio */
             border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
         }
         .about__info {
-            grid-column: 1 / span 1; /* Position text in the first column */
-            text-align: center; /* Align text to the center */
-            animation: slideInFromLeft 1s ease-out;
+            text-align: center; /* Center text on mobile */
         }
         .about__subtitle {
             font-size: 2rem;
             margin-bottom: 20px;
         }
         .about__text {
-            font-size: 1.2rem;
+            font-size: 1rem;
             line-height: 1.6;
+            margin: 0 auto;
+            max-width: 800px; /* Limit text width */
         }
         button {
             background-color: #4CAF50;
@@ -75,7 +71,8 @@
             color: white;
             font-size: 1rem;
             transition: background-color 0.3s ease, box-shadow 0.3s ease;
-            margin-right: 20px; /* Adjust margin for spacing */
+            margin: 10px auto; /* Center button */
+            display: block;
         }
         button:hover {
             background-color: #45a049; /* Darker shade on hover */
@@ -92,6 +89,7 @@
             display: inline-block;
             overflow: hidden;
             z-index: 1;
+            margin-top: 20px; /* Add margin to separate from content */
         }
         .pop-up::after {
             content: "";
@@ -107,22 +105,69 @@
         .pop-up:hover::after {
             left: 100%;
         }
+
+        /* Media Queries */
+        @media (min-width: 768px) {
+            .about__container {
+                grid-template-columns: 1fr 1fr; /* Two columns for tablet and desktop */
+                gap: 50px;
+            }
+            .about__img {
+                text-align: right; /* Align image to the right on larger screens */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 40px 10px;
+            }
+            .about__subtitle {
+                font-size: 1.5rem;
+            }
+            .about__text {
+                font-size: 1rem;
+            }
+            button {
+                font-size: 0.9rem;
+                padding: 10px 20px;
+                margin: 10px auto; /* Center button */
+                display: block;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section {
+                padding: 20px 5px;
+            }
+            .about__subtitle {
+                font-size: 1.25rem;
+            }
+            .about__text {
+                font-size: 0.9rem;
+            }
+            button {
+                font-size: 0.8rem;
+                padding: 8px 16px;
+                margin: 10px auto; /* Center button */
+                display: block;
+            }
+        }
     </style>
 </head>
 <body>
     <section class="about section" id="about">
         <button><a href="index.html">Home</a></button>
-        <div class="about__container bd-grid">
+        <div class="about__container">
             <div class="about__info">
-                <h2 class="about__subtitle">Face Recognition</h2>
-                <p class="about__text">"Face Recognition" is an advanced Python project that utilizes deep learning algorithms to accurately identify and verify individuals from digital images or video frames. Developed using frameworks such as OpenCV and TensorFlow, this project implements convolutional neural networks (CNNs) and facial recognition models like VGG-Face or FaceNet. It enables automatic detection, alignment, and recognition of faces in various settings, from security surveillance to personalized user authentication. With applications in attendance systems, access control, and law enforcement, this project exemplifies the intersection of AI technology and biometrics for enhancing security and efficiency in diverse industries..</p>
+                <h2 class="about__subtitle">Hand Gesture Recognition</h2>
+                <p class="about__text">"Hand Gesture Recognition" is an advanced Python project leveraging computer vision techniques to interpret and respond to hand movements in real-time. Built using libraries like OpenCV and TensorFlow, this project enables the detection and classification of various hand gestures, empowering interaction through intuitive hand movements. Whether it's recognizing gestures for controlling devices, sign language interpretation, or virtual reality applications, this project showcases the fusion of machine learning algorithms with real-world applications. Its robustness and accuracy make it a valuable tool for enhancing human-computer interaction and accessibility in diverse technological environments.</p>
             </div>
             <div class="about__img">
-                <img src="https://miro.medium.com/v2/resize:fit:1400/1*_eNBEzogCrSEdrhsktJe6g.jpeg" alt="About Image">
+                <img src="https://how2electronics.com/wp-content/uploads/2020/01/Gesture-Recognition-and-Its-Application-in-Machine-Learning.jpg" alt="About Image">
             </div>
         </div>
         <div class="pop-up">
-            <a href="payments5.html">DownLoad Project</a>
+            <button><a href="Payments.html">Download Project</a></button>
         </div>
     </section>
 </body>
