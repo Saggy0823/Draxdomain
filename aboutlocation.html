@@ -107,6 +107,53 @@
         .pop-up:hover::after {
             left: 100%;
         }
+
+        /* Media Queries */
+        @media (max-width: 1024px) {
+            .about__container {
+                grid-template-columns: 1fr; /* Single column layout for tablets */
+                gap: 20px;
+            }
+            .about__img {
+                text-align: center; /* Center image */
+            }
+            .about__info {
+                text-align: center; /* Center text */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 40px 10px;
+            }
+            .about__subtitle {
+                font-size: 1.5rem;
+            }
+            .about__text {
+                font-size: 1rem;
+            }
+            button {
+                font-size: 0.9rem;
+                padding: 10px 20px;
+                margin-right: 0; /* Remove margin on smaller screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section {
+                padding: 20px 5px;
+            }
+            .about__subtitle {
+                font-size: 1.25rem;
+            }
+            .about__text {
+                font-size: 0.9rem;
+            }
+            button {
+                font-size: 0.8rem;
+                padding: 8px 16px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -122,7 +169,7 @@
             </div>
         </div>
         <div class="pop-up">
-            <a href="payments2.html">DownLoad Project</a>
+            <a href="payments2.html">Download Project</a>
         </div>
     </section>
 </body>
