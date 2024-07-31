@@ -115,6 +115,34 @@
                 opacity: 1;
             }
         }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .about__container {
+                grid-template-columns: 1fr; /* Stack columns on small screens */
+                gap: 20px;
+            }
+            .about__img {
+                text-align: center;
+                grid-column: 1 / span 1; /* Full-width image on small screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 2rem; /* Smaller title on very small screens */
+            }
+            .about__subtitle {
+                font-size: 1.5rem;
+            }
+            .about__text {
+                font-size: 1rem;
+            }
+            button {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 <body>
