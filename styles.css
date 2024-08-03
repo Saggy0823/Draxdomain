@@ -9,6 +9,9 @@ body {
 h2 {
     text-align: center;
     margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s forwards 0.5s;
 }
 
 .projects-section,
@@ -19,6 +22,7 @@ h2 {
     justify-content: space-between; /* Distribute items evenly with space between */
 }
 
+/* Animations for Project Cards */
 .project-card {
     background-color: #ffffff;
     border-radius: 8px;
@@ -26,11 +30,15 @@ h2 {
     overflow: hidden;
     width: calc(50% - 20px);
     max-width: 300px;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s forwards;
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .project-card img {
@@ -38,6 +46,11 @@ h2 {
     height: auto;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover img {
+    transform: scale(1.05);
 }
 
 .card-body {
@@ -48,6 +61,8 @@ h2 {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 10px;
+    opacity: 0;
+    animation: fadeInUp 1s forwards 0.5s;
 }
 
 .card-description {
@@ -55,6 +70,8 @@ h2 {
     font-size: 14px;
     line-height: 1.5;
     margin-bottom: 15px;
+    opacity: 0;
+    animation: fadeInUp 1s forwards 0.7s;
 }
 
 .btn {
@@ -64,20 +81,78 @@ h2 {
     color: #ffffff;
     text-decoration: none;
     border-radius: 4px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 .btn:hover {
     background-color: #0056b3;
+    transform: scale(1.05);
 }
 
 .section-title {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s forwards 0.5s;
 }
 
-/* Animation using WOW.js and Animate.css */
-.wow {
-    visibility: hidden;
+/* Keyframe Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Media Queries */
+
+/* For tablets and larger mobile devices (up to 768px) */
+@media (max-width: 768px) {
+    .project-card {
+        width: calc(100% - 20px);
+        max-width: 100%;
+    }
+
+    .section-title {
+        font-size: 20px;
+    }
+
+    .card-title {
+        font-size: 16px;
+    }
+
+    .card-description {
+        font-size: 12px;
+    }
+}
+
+/* For mobile devices (up to 480px) */
+@media (max-width: 480px) {
+    .project-card {
+        width: calc(100% - 10px);
+        max-width: 100%;
+    }
+
+    .section-title {
+        font-size: 18px;
+    }
+
+    .card-title {
+        font-size: 14px;
+    }
+
+    .card-description {
+        font-size: 11px;
+    }
+
+    .btn {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
 }
