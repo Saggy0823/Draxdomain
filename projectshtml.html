@@ -7,10 +7,144 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Styles for the navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f8f9fa;
+            padding: 10px 20px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .navbar-logo img {
+            height: 50px;
+        }
+        
+        .navbar-home {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 500;
+        }
+        
+        /* Styles for the search button */
+        .search-button {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-button:hover {
+            background-color: #0056b3;
+        }
+
+        .search-button i {
+            font-size: 20px;
+        }
+        
+        .navbar-search {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* Styles for the project cards */
+        .projects-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .project-card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: calc(33.333% - 20px);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        .card-title {
+            font-size: 1.2em;
+            margin: 0;
+        }
+
+        .card-description {
+            color: #555;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 0.9em;
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .project-card {
+                width: calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .project-card {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<!-- HTML Projects Section -->
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="navbar-logo">
+        <a href="projectslogo.png">
+            <img src="projectslogo.png" alt="Logo">
+        </a>
+        <a href="https://saggy0823.github.io/Draxdomain/" class="navbar-home">Home</a>
+    </div>
+    <div class="navbar-search">
+        <input type="text" id="searchInput" placeholder="Search projects...">
+        <button class="search-button" onclick="performSearch()">
+            <i class="fa fa-search"></i>
+        </button>
+    </div>
+</nav>
+
 <h2 class="section-title">HTML Projects</h2>
 <section class="projects-section">
     <div class="project-card wow animate__animated animate__fadeInUp">
@@ -134,7 +268,6 @@
     </div>
 </section>
 
-<!-- Portfolio Section -->
 <h2 class="section-title">Portfolio Projects</h2>
 <section class="portfolio-section">
     <div class="project-card wow animate__animated animate__fadeInUp">
@@ -231,11 +364,143 @@
 
 </section>
 
+<h2 class="section-title">Python Projects</h2>
+<section class="projects-section">
+    <div class="project-card wow animate__animated animate__fadeInUp">
+        <img src="python_project1.jpg" alt="Python Project Image">
+        <div class="card-body">
+            <h3 class="card-title">Python Project 1</h3>
+            <p class="card-description">Drax AI Assistant: Build a Python voice assistant that understands and responds to spoken commands. Utilize speech recognition libraries like SpeechRecognition and a text-to-speech engine like pyttsx3 for interaction.</p>
+            <a href="python_project1.html" class="btn btn-primary">See Preview</a>
+            <a href="Payments2.html" class="btn btn-primary">Buy Now</a>
+        </div>
+    </div>
+
+    <div class="project-card wow animate__animated animate__fadeInUp">
+        <img src="python2.jpg" alt="Python Project Image">
+        <div class="card-body">
+            <h3 class="card-title">Python Project 2</h3>
+            <p class="card-description">Gemini Chatbot: Develop a Python chatbot that engages in dynamic conversations and provides intelligent responses. Use libraries like ChatterBot or Rasa for natural language processing and dialogue management.</p>
+            <a href="python_project2.html" class="btn btn-primary">See Preview</a>
+            <a href="Payments2.html" class="btn btn-primary">Buy Now</a>
+        </div>
+    </div>
+
+    <div class="project-card wow animate__animated animate__fadeInUp">
+        <img src="python3.jpg" alt="Python Project Image">
+        <div class="card-body">
+            <h3 class="card-title">Python Project 3</h3>
+            <p class="card-description">Face Recognition: Create a Python application for face recognition using libraries like OpenCV and face_recognition. Implement features for identifying and verifying faces in images or video streams.</p>
+            <a href="python_project3.html" class="btn btn-primary">See Preview</a>
+            <a href="Payments2.html" class="btn btn-primary">Buy Now</a>
+        </div>
+    </div>
+
+    <div class="project-card wow animate__animated animate__fadeInUp">
+        <img src="python4.jpg" alt="Python Project Image">
+        <div class="card-body">
+            <h3 class="card-title">Python Project 4</h3>
+            <p class="card-description">SIM Information Tracker: Develop a Python tool to track and manage SIM card details such as usage, balance, and expiration. Use libraries like SQLite for data storage and Tkinter or Flask for the user interface.</p>
+            <a href="python_project4.html" class="btn btn-primary">See Preview</a>
+            <a href="Payments2.html" class="btn btn-primary">Buy Now</a>
+        </div>
+    </div>
+
+    <div class="project-card wow animate__animated animate__fadeInUp">
+        <img src="python5.jpg" alt="Python Project Image">
+        <div class="card-body">
+            <h3 class="card-title">Python Project 5</h3>
+            <p class="card-description">Hand Gesture Recognition: Build a Python application to recognize and interpret hand gestures using libraries like OpenCV and MediaPipe. Implement real-time gesture tracking to control applications or games.</p>
+            <a href="python_project5.html" class="btn btn-primary">See Preview</a>
+            <a href="Payments2.html" class="btn btn-primary">Buy Now</a>
+        </div>
+    </div>
+
+    <div class="project-card wow animate__animated animate__fadeInUp">
+        <img src="python6.jpg" alt="Python Project Image">
+        <div class="card-body">
+            <h3 class="card-title">Python Project 6</h3>
+            <p class="card-description">To-Do List: Develop a Python to-do list application that lets users efficiently add, edit, and delete tasks. Incorporate a user-friendly interface with Tkinter and use SQLite or JSON for seamless task storage and management.</p>
+            <a href="python_project6.html" class="btn btn-primary">See Preview</a>
+            <a href="Payments2.html" class="btn btn-primary">Buy Now</a>
+        </div>
+    </div>
+
+    <div class="project-card wow animate__animated animate__fadeInUp">
+        <img src="python7.jpg" alt="Python Project Image">
+        <div class="card-body">
+            <h3 class="card-title">Python Project 7</h3>
+            <p class="card-description">Jarvis AI: Build a Python-based Jarvis-like AI assistant capable of handling voice commands, performing tasks, and providing information. Leverage libraries such as SpeechRecognition for voice input and pyttsx3 for text-to-speech output</p>
+            <a href="python_project7.html" class="btn btn-primary">See Preview</a>
+            <a href="Payments3.html" class="btn btn-primary">Buy Now</a>
+        </div>
+    </div>
+
+    <div class="project-card wow animate__animated animate__fadeInUp">
+        <img src="python8.jpg" alt="Python Project Image">
+        <div class="card-body">
+            <h3 class="card-title">Python Project 8</h3>
+            <p class="card-description">NEWZO / News Assistant: Create a Python news assistant that fetches and summarizes the latest news based on user interests. Use news APIs like NewsAPI and libraries like Requests for data retrieval and BeautifulSoup for parsing.</p>
+            <a href="python_project8.html" class="btn btn-primary">See Preview</a>
+            <a href="Payments2.html" class="btn btn-primary">Buy Now</a>
+        </div>
+    </div>
+
+    <div class="project-card wow animate__animated animate__fadeInUp">
+        <img src="python9.jpg" alt="Python Project Image">
+        <div class="card-body">
+            <h3 class="card-title">Python Project 9</h3>
+            <p class="card-description">Weather App: Develop a Python application that provides real-time weather updates based on user location. Use the OpenWeatherMap API for data retrieval and Tkinter or Flask for a user-friendly interface.</p>
+            <a href="python_project9.html" class="btn btn-primary">See Preview</a>
+            <a href="Payments2.html" class="btn btn-primary">Buy Now</a>
+        </div>
+    </div>
+</section>
 <!-- Scripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
 <script>
     new WOW().init();
+
+    function performSearch() {
+        const query = document.getElementById('searchInput').value.toLowerCase();
+        const sections = document.querySelectorAll('.projects-section');
+
+        sections.forEach(section => {
+            const cards = section.querySelectorAll('.project-card');
+            let isVisible = false;
+
+            cards.forEach(card => {
+                const title = card.querySelector('.card-title').textContent.toLowerCase();
+
+                if (title.includes(query)) {
+                    card.style.display = 'block';
+                    isVisible = true;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Show or hide the section based on whether any cards are visible
+            section.style.display = isVisible ? 'flex' : 'none';
+        });
+
+        // If no sections match, scroll to the first matching section
+        const visibleSections = Array.from(sections).filter(section => section.style.display === 'flex');
+        if (visibleSections.length > 0) {
+            visibleSections[0].scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+
+    // Add an event listener to the search input to trigger search on Enter key
+    document.getElementById('searchInput').addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            performSearch();
+        }
+    });
 </script>
+
+<!-- Include FontAwesome for the search icon -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
 
 </body>
 </html>
