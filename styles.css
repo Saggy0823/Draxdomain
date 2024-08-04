@@ -4,8 +4,80 @@ body {
     padding: 20px;
     margin: 0 auto; /* Center the content horizontally */
     max-width: 1200px; /* Set maximum width for the content */
+    padding-top: 60px; /* Ensure content is not hidden behind the navbar */
 }
 
+/* Navbar Styles */
+.navbar {
+    background: linear-gradient(90deg, #007bff, #0056b3);
+    padding: 10px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Ensure the navbar is on top of other content */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between; /* Adjust alignment of items */
+    align-items: center; /* Center items vertically */
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between logo and home button */
+}
+
+.navbar-logo img {
+    height: 40px; /* Adjust size as needed */
+    width: auto;
+}
+
+.navbar-home {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.navbar-home:hover {
+    color: #eaeaea;
+}
+
+.navbar-search {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between search input and button */
+    position: relative; /* Allow adjustment of position */
+    left: -25px; /* Move search bar a little to the left */
+}
+
+.navbar-search input {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+}
+
+.navbar-search button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #ffffff;
+    color: #007bff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar-search button:hover {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+/* Ensure that other content doesn't get hidden behind the navbar */
 h2 {
     text-align: center;
     margin-bottom: 20px;
