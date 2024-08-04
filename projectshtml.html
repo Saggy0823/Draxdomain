@@ -8,29 +8,115 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Styles for the navbar */
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            padding: 20px;
+            margin: 0 auto;
+            max-width: 1200px;
+            padding-top: 60px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Navbar Styles */
         .navbar {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            padding: 10px 20px;
+            position: fixed;
+            width: 100%;
+            background-color: white;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #f8f9fa;
-            padding: 10px 20px;
-            border-bottom: 1px solid #dee2e6;
+            animation: slideIn 1s ease-out;
         }
-        
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
         .navbar-logo img {
-            height: 50px;
+            height: 40px;
+            width: auto;
+            transition: transform 0.3s ease;
         }
-        
+
+        .navbar-logo img:hover {
+            transform: rotate(360deg);
+        }
+
         .navbar-home {
+            color: var(--text-color);
+            font-size: 18px;
+            font-weight: 600;
             text-decoration: none;
-            color: #ffffff;
-            font-weight: 500;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
         }
-        
+
+        .navbar-home:hover {
+            color: #eaeaea;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar-search {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-left: -35px;
+            position: relative;
+            margin-right: -25;
+        }
+        .navbar-content {
+    display: flex;
+    align-items: center;
+    margin-left: -40px; /* Shift the whole content 20px to the left */
+}
+
+        .navbar-search input {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            outline: none;
+            transition: background-color 0.3s ease;
+            color: var(--text-color);
+            background-color: var(--input-background);
+        }
+
+        .navbar-search input:focus {
+            background-color: var(--input-focus-background);
+        }
+
+        /* Dark mode and light mode styles */
+        :root {
+            --background-color: #ffffff;
+            --text-color: #000000;
+            --primary-color: #007bff;
+            --secondary-color: #0056b3;
+            --input-background: #f0f0f0;
+            --input-focus-background: #ffffff;
+        }
+
+        .dark-mode {
+            --background-color: #000000;
+            --text-color: #ffffff;
+            --primary-color: #007bff;
+            --secondary-color: #0056b3;
+            --input-background: #333333;
+            --input-focus-background: #444444;
+        }
+
         /* Styles for the search button */
         .search-button {
-            background-color: #007bff;
+            background-color: var(--primary-color);
             color: #ffffff;
             border: none;
             border-radius: 50%;
@@ -44,29 +130,16 @@
         }
 
         .search-button:hover {
-            background-color: #0056b3;
+            background-color: var(--secondary-color);
         }
 
         .search-button i {
             font-size: 20px;
         }
         
-        .navbar-search {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
         /* Styles for the project cards */
-        .projects-section {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            padding: 20px;
-        }
-
         .project-card {
-            background: #fff;
+            background: var(--background-color);
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             overflow: hidden;
@@ -98,7 +171,7 @@
         }
 
         .btn-primary {
-            background-color: #007bff;
+            background-color: var(--primary-color);
             color: #fff;
             border: none;
             border-radius: 4px;
@@ -109,8 +182,43 @@
             margin-right: 5px;
         }
 
+        #themeToggle {
+    width: 15px; /* Set the width of the button */
+    height: 15px; /* Set the height of the button */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    background-color: var(--primary-color);
+    transition: background-color 0.3s ease;
+}
+
+#themeToggle:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Styles for the icons */
+.theme-icon {
+    width: 24px; /* Set the width of the icons */
+    height: 24px; /* Set the height of the icons */
+    transition: opacity 0.3s ease;
+}
+
+/* Hide the icons when not needed */
+.light-mode-icon {
+    display: none;
+}
+
+.dark-mode .light-mode-icon {
+    display: inline;
+}
+
+.dark-mode .dark-mode-icon {
+    display: none;
+}
         .btn-primary:hover {
-            background-color: #0056b3;
+            background-color: var(--secondary-color);
         }
 
         /* Responsive adjustments */
@@ -128,7 +236,6 @@
     </style>
 </head>
 <body>
-
 <!-- Navbar -->
 <nav class="navbar">
     <div class="navbar-logo">
@@ -137,14 +244,18 @@
         </a>
         <a href="https://saggy0823.github.io/Draxdomain/" class="navbar-home">Home</a>
     </div>
-    <div class="navbar-search">
+    <div class="navbar-search" style="margin-left: -50px;">
+        <button id="themeToggle" class="search-button">
+            <img src="sun.png" alt="Light Mode" class="theme-icon light-mode-icon" style="display: none;">
+            <img src="moon.png" alt="Dark Mode" class="theme-icon dark-mode-icon">
+        </button>
         <input type="text" id="searchInput" placeholder="Search projects...">
         <button class="search-button" onclick="performSearch()">
             <i class="fa fa-search"></i>
         </button>
+        <!-- Dark/Light Mode Toggle -->
     </div>
 </nav>
-
 <h2 class="section-title">HTML Projects</h2>
 <section class="projects-section">
     <div class="project-card wow animate__animated animate__fadeInUp">
@@ -456,6 +567,7 @@
         </div>
     </div>
 </section>
+
 <!-- Scripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
 <script>
@@ -497,10 +609,17 @@
             performSearch();
         }
     });
+
+    // Theme Toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const lightModeIcon = document.querySelector('.light-mode-icon');
+    const darkModeIcon = document.querySelector('.dark-mode-icon');
+
+    themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        lightModeIcon.style.display = document.body.classList.contains('dark-mode') ? 'none' : 'inline';
+        darkModeIcon.style.display = document.body.classList.contains('dark-mode') ? 'inline' : 'none';
+    });
 </script>
-
-<!-- Include FontAwesome for the search icon -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
-
 </body>
 </html>
