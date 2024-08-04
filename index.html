@@ -49,7 +49,36 @@
 		<!--[if lt IE 9]>
 		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-		<![endif]-->
+		  <![endif]-->
+	<style>
+		/* Assuming the container where the button is placed has a class of .ibe */
+.ibe {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Optional: centers the button vertically if needed */
+    height: 100%; /* Adjust based on your layout */
+}
+
+/* Styling for the button */
+.btn-see-more {
+    padding: 10px 20px;
+    background-color: #4ad46a; /* Green background color */
+    color: #fff; /* White text color */
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight:lighter;
+    border-radius: 60px; /* Rounded edges for cylindrical shape */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Button hover effect */
+.btn-see-more:hover {
+    background-color: #4ad46a; /* Darker green on hover */
+}
+	</style>
 	</head>
   
 	<body data-spy="scroll" data-offset="80">
@@ -383,7 +412,10 @@
 								</div>
 							</div>
 						</div>
-						<a href="projectshtml.html">See More</a>
+						<br>
+						<div class="ibe">
+							<a href="#" class="btn-see-more">See More Projects in Single Click</a>
+						</div>
 					</div>
 				</div>
 			</div>
