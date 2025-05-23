@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Professional Footer Social Animation</title>
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    rel="stylesheet"
+  />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap');
+
+    /* RESET */
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+
+    body {
+      background: #121214;
+      font-family: 'Outfit', sans-serif;
+      color: #ddd;
+      min-height: 150vh; /* tall to allow scrolling */
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    footer.footer {
+      background: #1e1e23;
+      padding: 50px 20px 80px;
+      text-align: center;
+      position: relative;
+      user-select: none;
+      box-shadow: 0 -1px 15px rgba(0, 0, 0, 0.8);
+      border-top: 2px solid #22262d;
+      margin-top: auto;
+    }
+
+    .social-icons {
+      position: relative;
+      width: 350px;
+      height: 80px;
+      margin: 0 auto 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      user-select: none;
+      overflow: visible;
+    }
+
+    .social-icon {
+      font-size: 30px;
+      color: #eee;
+      background: linear-gradient(145deg, #2a2a32, #22262d);
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      line-height: 56px;
+      cursor: pointer;
+      box-shadow:
+        3px 3px 6px #1a1a1f,
+        -3px -3px 6px #2f3037;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition:
+        color 0.35s ease,
+        box-shadow 0.35s ease,
+        opacity 0.5s ease,
+        transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+        background 0.4s ease;
+      opacity: 0;
+      pointer-events: none;
+      user-select: none;
+      z-index: 10;
+      will-change: transform, box-shadow, opacity;
+    }
+
+    /* Hover & Focus effect: smooth glow and subtle scale */
+    .social-icon:hover,
+    .social-icon:focus {
+      outline: none;
+      color: #fff;
+      background: linear-gradient(145deg, #3a3a44, #2c2c34);
+      box-shadow:
+        0 0 12px 3px rgba(0, 170, 255, 0.7),
+        0 0 25px 7px rgba(0, 170, 255, 0.4),
+        inset 0 0 6px rgba(0, 170, 255, 0.8);
+      transform: translate(-50%, -50%) scale(1.12);
+      transition:
+        box-shadow 0.45s ease,
+        transform 0.45s ease;
+      z-index: 100 !important;
+    }
+
+    /* Specific subtle accent colors on hover for brand icons */
+    .gmail:hover,
+    .gmail:focus {
+      box-shadow:
+        0 0 12px 3px rgba(212, 70, 56, 0.7),
+        0 0 25px 7px rgba(212, 70, 56, 0.4),
+        inset 0 0 6px rgba(212, 70, 56, 0.8);
+    }
+    .instagram:hover,
+    .instagram:focus {
+      box-shadow:
+        0 0 12px 3px rgba(228, 64, 95, 0.7),
+        0 0 25px 7px rgba(228, 64, 95, 0.4),
+        inset 0 0 6px rgba(228, 64, 95, 0.8);
+    }
+    .linkedin:hover,
+    .linkedin:focus {
+      box-shadow:
+        0 0 12px 3px rgba(0, 119, 181, 0.7),
+        0 0 25px 7px rgba(0, 119, 181, 0.4),
+        inset 0 0 6px rgba(0, 119, 181, 0.8);
+    }
+    .twitter:hover,
+    .twitter:focus {
+      box-shadow:
+        0 0 12px 3px rgba(29, 161, 242, 0.7),
+        0 0 25px 7px rgba(29, 161, 242, 0.4),
+        inset 0 0 6px rgba(29, 161, 242, 0.8);
+    }
+    .github:hover,
+    .github:focus {
+      box-shadow:
+        0 0 12px 3px rgba(108, 198, 68, 0.7),
+        0 0 25px 7px rgba(108, 198, 68, 0.4),
+        inset 0 0 6px rgba(108, 198, 68, 0.8);
+    }
+
+    /* Initial states */
+    .social-icon.gmail {
+      opacity: 1;
+      pointer-events: auto;
+      z-index: 30;
+      transform: translate(-50%, -50%);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transition: none;
+    }
+    .social-icon.instagram,
+    .social-icon.linkedin,
+    .social-icon.twitter,
+    .social-icon.github {
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* Animation steps */
+    .step1 .social-icon.gmail {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translate(-50%, -50%);
+    }
+    .step1 .social-icon.instagram,
+    .step1 .social-icon.linkedin,
+    .step1 .social-icon.twitter,
+    .step1 .social-icon.github {
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+    }
+
+    .step2 .social-icon.instagram,
+    .step2 .social-icon.linkedin {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .step2 .social-icon.instagram {
+      transform: translate(calc(-50% - 110px), -50%);
+    }
+    .step2 .social-icon.linkedin {
+      transform: translate(calc(-50% + 110px), -50%);
+    }
+    .step2 .social-icon.gmail {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translate(-50%, -50%);
+    }
+    .step2 .social-icon.twitter,
+    .step2 .social-icon.github {
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+    }
+
+    .step3 .social-icon.twitter,
+    .step3 .social-icon.github {
+    opacity: 1;
+    pointer-events: auto;
+    }
+    .step3 .social-icon.twitter {
+    transform: translate(calc(-50% - 230px), -50%);
+    z-index: 25;
+    }
+    .step3 .social-icon.github {
+    transform: translate(calc(-50% + 230px), -50%);
+    z-index: 25;
+    }
+    .step3 .social-icon.instagram {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(calc(-50% - 110px), -50%);
+    z-index: 20;
+    }
+    .step3 .social-icon.linkedin {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(calc(-50% + 110px), -50%);
+    z-index: 20;
+    }
+    .step3 .social-icon.gmail {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%);
+    z-index: 30;
+    }
+
+    /* Subtle slow floating animation */
+    .floating {
+    animation: floatSlow 6s ease-in-out infinite;
+    }
+    .social-icon.twitter.floating { animation-delay: 0s; }
+    .social-icon.instagram.floating { animation-delay: 0.5s; }
+    .social-icon.gmail.floating { animation-delay: 1s; }
+    .social-icon.linkedin.floating { animation-delay: 1.5s; }
+    .social-icon.github.floating { animation-delay: 2s; }
+
+    @keyframes floatSlow {
+    0%, 100% {
+        transform: translate(var(--tx, 0), -50%) translateY(0);
+    }
+    50% {
+        transform: translate(var(--tx, 0), calc(-50% - 4px)) translateY(-4px);
+    }
+    }
+
+    /* Preserve horizontal translate while floating */
+    .social-icon.twitter { --tx: calc(-50% - 230px); }
+    .social-icon.instagram { --tx: calc(-50% - 110px); }
+    .social-icon.linkedin { --tx: calc(-50% + 110px); }
+    .social-icon.github { --tx: calc(-50% + 230px); }
+    .social-icon.gmail { --tx: -50%; }
+
+    /* Labels container */
+    .labels-container {
+    width: 350px;
+    margin-left: 1000px;
+    margin: 0 auto 20px;
+    display: flex;
+    justify-content: center;
+    gap: 55px;
+    user-select: none;
+    color: #777;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    font-family: 'Outfit', sans-serif;
+    opacity: 0;
+    transition: opacity 0.8s ease 0.7s;
+    pointer-events: none;
+    }
+
+
+    /* Show labels after animation */
+    .show-labels {
+      opacity: 1 !important;
+      pointer-events: auto !important;
+    }
+
+    /* Each label is clickable link */
+    .labels-container a {
+      color: #999;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      cursor: pointer;
+      display: inline-block;
+      width: 56px;
+      text-align: center;
+      outline-offset: 2px;
+      user-select: none;
+    }
+    .labels-container a:hover,
+    .labels-container a:focus {
+      color: #00aaff;
+      outline: none;
+      text-decoration: underline;
+    }
+
+    /* Gmail label style distinct */
+    .labels-container a.gmail-label {
+      width: 70px;
+      font-weight: 700;
+      color: #d44638;
+    }
+    .labels-container a.gmail-label:hover,
+    .labels-container a.gmail-label:focus {
+      color: #ff6b5c;
+      text-decoration: underline;
+    }
+
+    /* Name and email below labels */
+    .contact-info {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #00aaff;
+      text-align: center;
+      user-select: text;
+      opacity: 0;
+      transform: translateY(15px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      max-width: 350px;
+      margin: 0 auto 0px;
+      text-shadow: 0 0 6px rgba(0, 170, 255, 0.8);
+      line-height: 1.4;
+    }
+    .contact-info.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Email link styling inside contact-info */
+    .contact-info a {
+      color: #00aaff;
+      text-decoration: none;
+      font-weight: 700;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s ease;
+    }
+    .contact-info a:hover,
+    .contact-info a:focus {
+      border-color: #00aaff;
+      outline: none;
+    }
+
+    /* Copyright */
+    .copyright {
+      margin-top: 10px;
+      font-size: 0.85rem;
+      color: #666;
+      font-family: 'Outfit', sans-serif;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <main style="min-height:140vh; padding: 30px; color:#ccc;">
+    <h1>Scroll down to footer</h1>
+    <p style="max-width: 480px; margin: 20px auto;">
+      This demo page has some content above so you can scroll down to see the footer animation triggered once.
+    </p>
+  </main>
+
+  <footer class="footer" aria-label="Footer">
+    <div
+      class="social-icons step1"
+      aria-live="polite"
+      aria-atomic="true"
+      role="region"
+      aria-label="Social media icons"
+    >
+      <a
+        href="mailto:sp3774163@gmail.com"
+        class="social-icon gmail"
+        aria-label="Email: sp3774163@gmail.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        tabindex="0"
+      >
+        <i class="fa-solid fa-envelope"></i>
+      </a>
+      <a
+        href="https://instagram.com/its_sp_0823"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="social-icon instagram"
+        aria-label="Instagram profile"
+        tabindex="0"
+      >
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a
+        href="https://linkedin.com/in/sagarpawar"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="social-icon linkedin"
+        aria-label="LinkedIn profile"
+        tabindex="0"
+      >
+        <i class="fa-brands fa-linkedin-in"></i>
+      </a>
+      <a
+        href="https://twitter.com/sagarpawar"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="social-icon twitter"
+        aria-label="Twitter profile"
+        tabindex="0"
+      >
+        <i class="fa-brands fa-twitter"></i>
+      </a>
+      <a
+        href="https://github.com/sagarpawar"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="social-icon github"
+        aria-label="GitHub profile"
+        tabindex="0"
+      >
+        <i class="fa-brands fa-github"></i>
+      </a>
+    </div>
+
+    <div class="labels-container" aria-label="Social media app names">
+      <a href="https://twitter.com/sagarpawar" target="_blank" rel="noopener noreferrer" tabindex="0">Twitter</a>
+      <a href="https://instagram.com/sagarpawar" target="_blank" rel="noopener noreferrer" tabindex="0">Instagram</a>
+      <a href="mailto:sp3774163@gmail.com" class="gmail-label" tabindex="0">Gmail</a>
+      <a href="https://linkedin.com/in/sagarpawar" target="_blank" rel="noopener noreferrer" tabindex="0">LinkedIn</a>
+      <a href="https://github.com/sagarpawar" target="_blank" rel="noopener noreferrer" tabindex="0">GitHub</a>
+    </div>
+
+    <div class="contact-info" aria-label="Contact Information">
+      <span>Sagar Pawar | </span>
+      <a href="mailto:sp3774163@gmail.com" tabindex="0">sp3774163@gmail.com</a>
+    </div>
+
+    <div class="copyright" aria-hidden="true">
+      &copy; 2025 Sagar Pawar. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const footer = document.querySelector('.footer');
+      const socialIcons = document.querySelector('.social-icons');
+      const labelsContainer = document.querySelector('.labels-container');
+      const contactInfo = document.querySelector('.contact-info');
+      const icons = [...socialIcons.querySelectorAll('.social-icon')];
+
+      let step = 1;
+      const maxStep = 3;
+      let animationPlayed = false;
+
+      // Helper: add/remove step classes on socialIcons container
+      function updateStepClass(s) {
+        socialIcons.classList.remove('step1', 'step2', 'step3');
+        socialIcons.classList.add(`step${s}`);
+      }
+
+      // Start floating effect after animation completes
+      function enableFloating() {
+        icons.forEach(icon => {
+          icon.classList.add('floating');
+        });
+        labelsContainer.classList.add('show-labels');
+        contactInfo.classList.add('visible');
+      }
+
+      // Animate icons step by step
+      function animateSteps() {
+        if (step > maxStep) {
+          enableFloating();
+          return;
+        }
+        updateStepClass(step);
+        step++;
+        setTimeout(animateSteps, 1500);
+      }
+
+      // Observe footer visibility once, trigger animation
+      const observer = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting && !animationPlayed) {
+              animationPlayed = true;
+              animateSteps();
+              observer.disconnect();
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      observer.observe(footer);
+    })();
+  </script>
+</body>
+</html>
